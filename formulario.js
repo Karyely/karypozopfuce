@@ -1,4 +1,4 @@
-document.getElementById('formulario').addEventListener('submit', function(event) {
+|document.getElementById('formulario').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita el envío del formulario
 
     // Obtén los valores del formulario
