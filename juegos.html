@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienestar Mental - Juegos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-image: url('archivos/fondo6.jpg');
+            background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Hace que la imagen de fondo se mantenga fija al hacer scroll */
+            background-position: center; /* Centra la imagen de fondo */
+        }
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #3498db;
+            color: #fff;
+        }
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #2c3e50;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav ul li:hover ul {
+            display: block;
+        }
+        nav ul li ul li {
+            display: block;
+        }
+        nav ul li ul li a {
+            padding: 10px 20px;
+        }
+        .intro {
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .intro h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #3498db;
+        }
+        .intro p {
+            font-size: 18px;
+            color: #333;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .button-container a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienestar Mental - Juegos</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Nosotros</a>
+                <ul>
+                    <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+                    <li><a href="contactanos.html">Contáctanos</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Información</a>
+                <ul>
+                    <li><a href="mision.html">Misión y Visión</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contenido</a>
+                <ul>
+                    <li><a href="salud_mental.html">Salud Mental</a></li>
+                    <li><a href="recursos.html">Recursos</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Desestrésate</a>
+                <ul>
+                    <li><a href="historias.html">Historias</a></li>
+                    <li><a href="juegos.html">Juegos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="intro">
+        <h1>Bienvenido a los Juegos de Bienestar Mental</h1>
+        <p>En esta página, encontrarás una serie de juegos diseñados para ayudarte a explorar y aprender más sobre el bienestar mental. Cada juego está enfocado en aspectos diferentes de la salud mental y te proporcionará una forma divertida de mejorar tu conocimiento y habilidades.</p>
+        <p>Explora los juegos a continuación para comenzar tu experiencia:</p>
+    </div>
+
+    <div class="button-container">
+        <a href="juegos1.html">Juego de Adivinanza</a>
+        <a href="juegos2.html">Juego de Trivia</a>
+    </div>
+</body>
+</html>

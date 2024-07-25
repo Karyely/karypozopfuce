@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('archivos/fondo7.jpg'); /* Reemplaza con la ruta correcta */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            text-align: center;
+            color: #333;
+            
+        }
+        .adivinanza-container {
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #3498db;
+            animation: textShake 1s infinite;
+        }
+        .word {
+            font-size: 28px;
+            margin: 20px 0;
+            letter-spacing: 2px;
+            color: #e74c3c;
+            animation: colorChange 2s infinite;
+        }
+        .input-box {
+            margin: 20px 0;
+        }
+        .input-box input {
+            font-size: 18px;
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin-right: 10px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-box input:focus {
+            border-color: #2980b9;
+        }
+        .input-box button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .input-box button:hover {
+            background-color: #2980b9;
+        }
+        .message {
+            font-size: 20px;
+            color: #e74c3c;
+            margin: 20px 0;
+            animation: fadeInOut 2s infinite;
+        }
+        .hint {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #3498db;
+        }
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        /* Animaciones */
+        @keyframes textShake {
+            0% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+            100% { transform: rotate(-1deg); }
+        }
+        @keyframes colorChange {
+            0% { color: #e74c3c; }
+            50% { color: #f1c40f; }
+            100% { color: #2ecc71; }
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="adivinanza-container">
+        <h1>Juego de Adivinanza</h1>
+        <div class="hint" id="hint"></div>
+        <div class="word" id="word"></div>
+        <div class="input-box">
+            <input type="text" id="guess" placeholder="Adivina la palabra">
+            <button onclick="checkGuess()">Adivinar</button>
+        </div>
+        <div class="message" id="message"></div>
+        <a href="juegos.html" class="back-button">Regresar a Juegos</a>
+    </div>
+
+    <script>
+        const puzzles = [
+            { word: 'RESPIRACION', hint: 'Es una técnica para calmar la mente y el cuerpo.' },
+            { word: 'RELAJACION', hint: 'Proceso para reducir el estrés y la tensión.' },
+            { word: 'MEDITACION', hint: 'Actividad que implica enfocar la mente para lograr calma.' }
+        ];
+
+        let currentPuzzleIndex = 0;
+        let currentPuzzle = puzzles[currentPuzzleIndex];
+        let displayWord = '_'.repeat(currentPuzzle.word.length);
+
+        document.getElementById('hint').innerText = 'Pista: ' + currentPuzzle.hint;
+        document.getElementById('word').innerText = displayWord;
+
+        function checkGuess() {
+            const guess = document.getElementById('guess').value.toUpperCase();
+            if (guess.length === 1) {
+                let newDisplayWord = '';
+                for (let i = 0; i < currentPuzzle.word.length; i++) {
+                    newDisplayWord += currentPuzzle.word[i] === guess ? currentPuzzle.word[i] : displayWord[i];
+                }
+                displayWord = newDisplayWord;
+                document.getElementById('word').innerText = displayWord;
+                if (displayWord === currentPuzzle.word) {
+                    document.getElementById('message').innerText = '¡Correcto! Has adivinado la palabra.';
+                    currentPuzzleIndex++;
+                    if (currentPuzzleIndex < puzzles.length) {
+                        currentPuzzle = puzzles[currentPuzzleIndex];
+                        displayWord = '_'.repeat(currentPuzzle.word.length);
+                        document.getElementById('hint').innerText = 'Pista: ' + currentPuzzle.hint;
+                        document.getElementById('word').innerText = displayWord;
+                        document.getElementById('message').innerText = '';
+                    } else {
+                        document.getElementById('message').innerText = '¡Felicidades! Has completado todas las adivinanzas.';
+                    }
+                }
+            } else {
+                document.getElementById('message').innerText = 'Por favor, ingresa una sola letra.';
+            }
+            document.getElementById('guess').value = '';
+        }
+    </script>
+</body>
+</html>

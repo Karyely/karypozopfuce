@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopa de Letras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('ruta/a/tu/imagen-de-fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .puzzle {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            gap: 1px;
+            margin: 20px auto;
+            max-width: 320px;
+            border: 2px solid #fff;
+        }
+        .puzzle div {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+        .puzzle div.selected {
+            background-color: #f39c12;
+            color: #fff;
+        }
+        .button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #timer {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        #message {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sopa de Letras</h1>
+        <p>Encuentra las siguientes palabras en la sopa de letras:</p>
+        <ul>
+            <li>FELICIDAD</li>
+            <li>VALOR</li>
+            <li>ESPERANZA</li>
+            <li>AMOR</li>
+            <li>PAZ</li>
+            <li>FUERZA</li>
+            <li>RECUPERACION</li>
+            <li>VIDA</li>
+        </ul>
+        <div id="timer">Tiempo: 00:00</div>
+        <div id="puzzle" class="puzzle">
+            <!-- La sopa de letras se genera dinámicamente con JavaScript -->
+        </div>
+        <button class="button" id="returnButton" onclick="window.location.href='juegos.html'">Regresar a los Juegos</button>
+        <div id="message">¡El tiempo ha terminado! Aquí están las respuestas. Será en otra ocasión.</div>
+    </div>
+
+    <script>
+        const words = ["FELICIDAD", "VALOR", "ESPERANZA", "AMOR", "PAZ", "FUERZA", "RECUPERACION", "VIDA"];
+        const size = 10;
+        const timerElement = document.getElementById('timer');
+        const puzzleElement = document.getElementById('puzzle');
+        const messageElement = document.getElementById('message');
+        let time = 0;
+        let timer;
+
+        function createPuzzle() {
+            const grid = Array.from({ length: size }, () => Array(size).fill(' '));
+            words.forEach(word => placeWord(grid, word));
+            displayPuzzle(grid);
+        }
+
+        function placeWord(grid, word) {
+            let placed = false;
+            while (!placed) {
+                const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+                const row = Math.floor(Math.random() * size);
+                const col = Math.floor(Math.random() * size);
+                if (canPlaceWord(grid, word, row, col, direction)) {
+                    for (let i = 0; i < word.length; i++) {
+                        if (direction === 'horizontal') {
+                            grid[row][col + i] = word[i];
+                        } else {
+                            grid[row + i][col] = word[i];
+                        }
+                    }
+                    placed = true;
+                }
+            }
+        }
+
+        function canPlaceWord(grid, word, row, col, direction) {
+            if (direction === 'horizontal') {
+                if (col + word.length > size) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row][col + i] !== ' ' && grid[row][col + i] !== word[i]) {
+                        return false;
+                    }
+                }
+            } else {
+                if (row + word.length > size) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row + i][col] !== ' ' && grid[row + i][col] !== word[i]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function displayPuzzle(grid) {
+            puzzleElement.innerHTML = '';
+            grid.forEach(row => {
+                row.forEach(cell => {
+                    const div = document.createElement('div');
+                    div.textContent = cell;
+                    puzzleElement.appendChild(div);
+                });
+            });
+        }
+
+        function startTimer() {
+            let seconds = 0;
+            timer = setInterval(() => {
+                seconds++;
+                const minutes = Math.floor(seconds / 60);
+                const sec = seconds % 60;
+                timerElement.textContent = `Tiempo: ${String(minutes).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+                if (seconds >= 300) { // 5 minutos
+                    clearInterval(timer);
+                    revealAnswers();
+                    messageElement.style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        function revealAnswers() {
+            // Aquí puedes mostrar las respuestas en la sopa de letras, si lo deseas
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createPuzzle();
+            startTimer();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      animation: colorChange 5s infinite;
+    }
+    h1 {
+      font-family: 'Arial Black', sans-serif;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      animation: moveText 5s linear infinite;
+    }
+    nav {
+      background-color: #2980b9;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      animation: colorChange 5s infinite;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #3498db;
+    }
+    main {
+      padding: 20px;
+      text-align: center; /* Alineación del contenido central */
+    }
+    footer {
+      background-color: #34495e;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      animation: colorChange 5s infinite;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto; /* Centrar el contenedor */
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 2s, colorChange 5s infinite;
+    }
+    h2 {
+      color: #3498db;
+      animation: colorChange 5s infinite;
+    }
+    p {
+      color: #555;
+    }
+    table {
+      margin: 20px auto; /* Centrar la tabla */
+      border-collapse: collapse;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #3498db;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    img {
+      display: block; /* Evitar superposición de texto */
+      margin: 0 auto; /* Centrar la imagen */
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: imgDynamic 5s infinite;
+    }
+    video {
+      display: block; /* Evitar superposición de texto */
+      margin: 0 auto; /* Centrar el video */
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes colorChange {
+      0% {
+        color: #fff;
+      }
+      25% {
+        color: #3498db;
+      }
+      50% {
+        color: #2c3e50;
+      }
+      75% {
+        color: #34495e;
+      }
+      100% {
+        color: #fff;
+      }
+    }
+    @keyframes moveText {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    @keyframes imgDynamic {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        transform: scale(1.1) rotate(10deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Recursos para la Salud Mental</h1>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="pagina principal.html">Inicio</a></li>
+      <li><a href="pagina1.html">Salud Mental</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <h2>Terapia de Grupo</h2>
+      <p>La terapia de grupo puede ser una herramienta eficaz para abordar una variedad de problemas de salud mental. Proporciona un entorno de apoyo donde los individuos pueden compartir sus experiencias y aprender estrategias de afrontamiento.</p>
+      <img src="archivos/boton_salud_mental.jpeg" alt="Terapia de Grupo" width="400" height="300">
+
+      <h2>Aplicaciones de Meditación</h2>
+      <p>Las aplicaciones de meditación pueden ayudar a mejorar el bienestar mental y reducir el estrés. Ofrecen una variedad de meditaciones guiadas y técnicas de respiración para practicar en cualquier momento y lugar.</p>
+      <img src="archivos/descarga.jpeg" alt="Aplicaciones de Meditación" width="400" height="300">
+
+      <h2>Tabla de Recursos</h2>
+      <table border="1">
+        <tr>
+          <th>Recurso</th>
+          <th>Descripción</th>
+          <th>Enlace</th>
+        </tr>
+        <tr>
+          <td>Línea de ayuda de salud mental</td>
+          <td>Proporciona apoyo emocional, información y recursos para aquellos que luchan con problemas de salud mental.</td>
+          <td><a href="https://www.som360.org/es/blog/proteger-salud-mental-desde-centros-educativos">Enlace</a></td>
+        </tr>
+        <tr>
+          <td>Grupo de apoyo en línea</td>
+          <td>Comunidades en línea donde los individuos pueden compartir sus experiencias y recibir apoyo de pares.</td>
+          <td><a href="https://www.paho.org/es/experiencias-salud-mental-apoyo-psicosocial-smaps-contexto-covid-19-terreno">Enlace</a></td>
+        </tr>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Salud Mental. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

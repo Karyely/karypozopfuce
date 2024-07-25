@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Trivia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('archivos/fondo8.jpg'); /* Reemplaza con la ruta correcta */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            text-align: center;
+            color: #333;
+        }
+        .trivia-container {
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #3498db;
+            animation: textShake 1s infinite;
+        }
+        .question {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #2ecc71;
+        }
+        .options {
+            margin: 20px 0;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .options button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .message {
+            font-size: 18px;
+            color: #e74c3c;
+            margin: 20px 0;
+            animation: fadeInOut 2s infinite;
+        }
+        .motivational-message {
+            display: none;
+            font-size: 24px;
+            color: #2ecc71;
+            margin-top: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        /* Animaciones */
+        @keyframes textShake {
+            0% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+            100% { transform: rotate(-1deg); }
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="trivia-container">
+        <h1>Juego de Trivia</h1>
+        <div class="question" id="question"></div>
+        <div class="options">
+            <button onclick="checkAnswer(0)" id="option0"></button>
+            <button onclick="checkAnswer(1)" id="option1"></button>
+            <button onclick="checkAnswer(2)" id="option2"></button>
+            <button onclick="checkAnswer(3)" id="option3"></button>
+        </div>
+        <div class="message" id="message"></div>
+        <div class="motivational-message" id="motivational-message">
+            ¡Felicidades por completar el juego! Recuerda, cada paso hacia adelante es un paso hacia el éxito.
+        </div>
+        <a href="juegos.html" class="back-button">Regresar a Juegos</a>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: '¿Cuál es la técnica de relajación que implica enfocarse en la respiración para calmar la mente?',
+                options: ['Meditación', 'Ejercicio', 'Escritura', 'Visualización'],
+                answer: 0
+            },
+            {
+                question: '¿Qué actividad puede ayudar a reducir el estrés y la ansiedad a través de la conexión con la naturaleza?',
+                options: ['Senderismo', 'Estudio', 'Trabajo', 'Juegos'],
+                answer: 0
+            },
+            {
+                question: '¿Cuál es el método que ayuda a identificar y cambiar patrones de pensamiento negativos?',
+                options: ['Terapia Cognitivo-Conductual', 'Relajación', 'Meditación', 'Ejercicio'],
+                answer: 0
+            },
+            {
+                question: '¿Qué práctica ayuda a estar presente en el momento y reducir el estrés?',
+                options: ['Mindfulness', 'Trabajo', 'Socialización', 'Estudio'],
+                answer: 0
+            },
+            {
+                question: '¿Qué técnica consiste en imaginar un lugar tranquilo para reducir el estrés?',
+                options: ['Visualización', 'Escritura', 'Ejercicio', 'Lectura'],
+                answer: 0
+            },
+            {
+                question: '¿Cuál es una forma efectiva de expresar y procesar emociones a través de la escritura?',
+                options: ['Diario', 'Meditación', 'Ejercicio', 'Visualización'],
+                answer: 0
+            },
+            {
+                question: '¿Qué tipo de actividad física es conocido por mejorar el estado de ánimo y reducir la ansiedad?',
+                options: ['Ejercicio Cardiovascular', 'Meditación', 'Escritura', 'Lectura'],
+                answer: 0
+            },
+            {
+                question: '¿Cuál es la práctica de observar los propios pensamientos sin juzgarlos?',
+                options: ['Mindfulness', 'Ejercicio', 'Trabajo', 'Estudio'],
+                answer: 0
+            },
+            {
+                question: '¿Qué técnica utiliza afirmaciones positivas para mejorar el bienestar emocional?',
+                options: ['Autoafirmaciones', 'Meditación', 'Ejercicio', 'Lectura'],
+                answer: 0
+            },
+            {
+                question: '¿Qué actividad puede ayudar a mejorar la salud mental y promover la relajación a través de la creatividad?',
+                options: ['Artes', 'Trabajo', 'Estudio', 'Juegos'],
+                answer: 0
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question').innerText = question.question;
+            question.options.forEach((option, index) => {
+                document.getElementById('option' + index).innerText = option;
+            });
+            document.getElementById('message').innerText = '';
+        }
+
+        function checkAnswer(selectedIndex) {
+            const question = questions[currentQuestionIndex];
+            if (selectedIndex === question.answer) {
+                document.getElementById('message').innerText = '¡Correcto!';
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    document.getElementById('motivational-message').style.display = 'block';
+                    document.querySelector('.options').style.display = 'none';
+                }
+            } else {
+                document.getElementById('message').innerText = 'Incorrecto. Intenta de nuevo.';
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

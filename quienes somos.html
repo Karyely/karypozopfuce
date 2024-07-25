@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiénes Somos - Salud Mental</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      animation: backgroundFade 10s infinite alternate;
+      background-image: url('archivos/fondo2.jpg');
+      background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      background-attachment: fixed; /* Hace que la imagen de fondo se mantenga fija al hacer scroll */
+      background-position: center; /* Centra la imagen de fondo */
+    }
+    header {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      animation: headerFade 5s infinite alternate;
+    }
+    header h1 {
+      margin: 0;
+      animation: textFade 2s infinite alternate;
+    }
+    nav {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      display: inline-block;
+      position: relative;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #3498db;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #2c3e50;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li {
+      display: block;
+    }
+    nav ul li ul li a {
+      padding: 10px 20px;
+      white-space: nowrap;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 2s;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    footer {
+      background-color: #34495e;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      animation: footerFade 5s infinite alternate;
+    }
+    .about-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .about-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      animation: textFade 2s infinite alternate;
+    }
+    .about-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .team-member {
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: center;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .team-member img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+    .team-member h3 {
+      font-size: 1.5em;
+      margin: 10px 0 5px 0;
+    }
+    .team-member p {
+      font-size: 1em;
+      color: #666;
+    }
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes backgroundFade {
+      from {
+        background-color: #f4f4f4;
+      }
+      to {
+        background-color: #e0e0e0;
+      }
+    }
+    @keyframes headerFade {
+      from {
+        background-color: #3498db;
+      }
+      to {
+        background-color: #2980b9;
+      }
+    }
+    @keyframes textFade {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes footerFade {
+      from {
+        background-color: #34495e;
+      }
+      to {
+        background-color: #2c3e50;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Salud Mental en la Educación</h1>
+    <img src="archivos/logo.jpg" alt="Logo" style="width: 60px;">
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="pagina principal.html">Inicio</a></li>
+      <li><a href="#">Nosotros</a>
+        <ul> 
+      <li><a href="contactanos.html">Contactanos</a></li>
+        </ul>
+      <li><a href="#">Información</a>
+        <ul>
+          <li><a href="mision.html">Misión y Visión</a></li>
+          <li><a href="registro.html">Registro</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contenido</a>
+        <ul>
+          <li><a href="salud mental.html">Salud Mental</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Desestrésate</a>
+        <ul>
+          <li><a href="historias.html">Historias</a></li>
+          <li><a href="juegos.html">Juegos</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="about-section">
+      <h2>Quiénes Somos</h2>
+      <p>En Salud Mental, estamos dedicados a promover el bienestar mental y emocional a través de la educación y el apoyo. Nuestro equipo está formado por profesionales comprometidos con la salud mental, trabajando juntos para crear recursos valiosos y accesibles para todos.</p>
+    </div>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="archivos/doc 1.jpg" alt="Miembro del equipo 1">
+        <h3>María López</h3>
+        <p>Psicóloga Clínica</p>
+      </div>
+      <div class="team-member">
+        <img src="archivos/doc 3.jpeg" alt="Miembro del equipo 2">
+        <h3>Carlos Rodríguez</h3>
+        <p>Terapeuta Familiar</p>
+      </div>
+      <div class="team-member">
+        <img src="archivos/doc 2.jpg" alt="Miembro del equipo 3">
+        <h3>Laura García</h3>
+        <p>Consejera de Salud Mental</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Salud Mental. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

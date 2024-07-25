@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Selectores */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('imagen.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('archivos/fondo7.jpg');
+            background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Hace que la imagen de fondo se mantenga fija al hacer scroll */
+            background-position: center; /* Centra la imagen de fondo */
+        }
+        .header {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .header img {
+            max-width: 80px;
+            margin-right: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #007bff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            animation: textGlow 1.5s infinite alternate;
+        }
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 15px #007bff, 0 0 20px #007bff;
+            }
+            to {
+                text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #007bff;
+            }
+        }
+        /* Estilo del menú desplegable */
+        .navbar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            z-index: 1;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            color: #007bff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 100px auto;
+            width: 90%;
+            animation: fadeIn 2s;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        input:focus,
+        textarea:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .header h1::after {
+            content: " - ¡Bienvenido!";
+            color: #007bff;
+            font-size: 18px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+        #datosIngresados {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin-top: 20px;
+            width: 90%;
+            animation: fadeIn 2s;
+        }
+        #datosIngresados p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #datosIngresados strong {
+            color: #007bff;
+        }
+        footer {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .fixed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .fixed-button:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header fade-in">
+        <img src="archivos/logo.jpg" alt="Logo">
+        <h1>Formulario de Contacto</h1>
+    </div>
+    
+    <div class="container fade-in">
+        <form id="formulario">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad">
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad">
+
+            <label for="intereses">Intereses:</label>
+            <input type="text" id="intereses" name="intereses">
+
+            <label for="motivo">Motivo de Consulta:</label>
+            <input type="text" id="motivo" name="motivo">
+
+            <label for="emocion">Estado Emocional:</label>
+            <input type="text" id="emocion" name="emocion">
+
+            <label for="ejercicio">¿Realizas ejercicio físico?</label>
+            <input type="checkbox" id="ejercicio" name="ejercicio">
+
+            <label for="sintomas">Síntomas Físicos:</label>
+            <textarea id="sintomas" name="sintomas"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <h2>Datos Ingresados</h2>
+    <div id="datosIngresados" class="container fade-in" style="display: none;">
+        <p><strong>Nombre:</strong> <span id="displayNombre"></span></p>
+        <p><strong>Edad:</strong> <span id="displayEdad"></span></p>
+        <p><strong>Correo Electrónico:</strong> <span id="displayEmail"></span></p>
+        <p><strong>Teléfono:</strong> <span id="displayTelefono"></span></p>
+        <p><strong>Ciudad:</strong> <span id="displayCiudad"></span></p>
+        <p><strong>Intereses:</strong> <span id="displayIntereses"></span></p>
+        <p><strong>Motivo de Consulta:</strong> <span id="displayMotivo"></span></p>
+        <p><strong>Estado Emocional:</strong> <span id="displayEmocion"></span></p>
+        <p><strong>¿Realizas ejercicio físico?:</strong> <span id="displayEjercicio"></span></p>
+        <p><strong>Síntomas Físicos:</strong> <span id="displaySintomas"></span></p>
+    </div>
+
+    <div class="button-container">
+        <button onclick="window.location.href='pagina principal.html'">Ir a la Página Principal</button>
+    </div>
+
+    <footer>
+        <p>© 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="fixed-button" onclick="window.location.href='pagina principal.html'">←</div>
+
+    <script src="formulario.js"></script>
+</body>
+</html>
